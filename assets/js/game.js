@@ -24,8 +24,6 @@ var fightOrSkip = function() {
 
 var fight = function(enemy) {
 
-        debugger;
-
     var isPlayerTurn = true;
 
     if (Math.random() > 0.5) {
@@ -115,12 +113,20 @@ var startGame = function() {
 };
 
 var endGame = function() {
+    debugger;
+    window.alert("The game has now ended.  Let's see how you did!");
 
-    if (playerInfo.health > 0) {
-        window.alert("Great job, you've survived the game!  You now have a score of " + playerInfo.money + ".");
+    var highScore = localStorage.getItem("highScore");
+
+    highScore = highScore || 0;
+
+    if (playerInfo.money > highScore) {
+        localStorage.setItem("highScore", playerInfo.money);
+        localStorage.setItem("name", playerInfo.name);
+        window.alert(playerInfo.name + " set a new high score of " + playerInfo.money + "!");
     }
     else {
-        window.alert("You've lost your robot in battle.");
+        window.alert(playerInfo.name + " did not beat the current high score of " + highScore + ".  Maybe next time!");
     }
 
     var playAgainConfirm = window.confirm("Would you like to play again?");
