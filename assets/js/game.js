@@ -83,7 +83,6 @@ var fight = function(enemy) {
 };
 
 var startGame = function() {
-
     playerInfo.reset();
 
     for(var i = 0; i < enemyInfo.length; i++) {
@@ -113,7 +112,6 @@ var startGame = function() {
 };
 
 var endGame = function() {
-    debugger;
     window.alert("The game has now ended.  Let's see how you did!");
 
     var highScore = localStorage.getItem("highScore");
